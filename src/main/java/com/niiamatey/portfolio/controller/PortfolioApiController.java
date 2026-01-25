@@ -48,9 +48,9 @@ public class PortfolioApiController {
         Map<String, Object> portfolio = new HashMap<>();
         portfolio.put("name", "Nii Amatey Tagoe");
         portfolio.put("title", "Software Engineer");
-        portfolio.put("email", "your-email@example.com");
+        portfolio.put("email", "armahtey@gmail.com");
         portfolio.put("github", "https://github.com/mrNiiAmatey");
-        portfolio.put("linkedin", "https://linkedin.com/in/your-profile");
+        portfolio.put("linkedin", "https://www.linkedin.com/in/mrarmahtey/");
         portfolio.put("location", "Dallas-Fort Worth, TX");
         portfolio.put("skills", skills);
         portfolio.put("projects", projects);

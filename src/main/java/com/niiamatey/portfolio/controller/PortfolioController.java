@@ -50,8 +50,8 @@ public class PortfolioController {
         // Personal information
         model.addAttribute("name", "Nii Amatey Tagoe");
         model.addAttribute("title", "Software Engineer");
-        model.addAttribute("email", "your-email@example.com");
-        model.addAttribute("linkedin", "https://linkedin.com/in/your-profile");
+        model.addAttribute("email", "armahtey@gmail.com");
+        model.addAttribute("linkedin", "https://www.linkedin.com/in/mrarmahtey/");
         model.addAttribute("github", "https://github.com/mrNiiAmatey");
         model.addAttribute("location", "Dallas-Fort Worth, TX");
         
@@ -76,14 +76,14 @@ public class PortfolioController {
         if (bindingResult.hasErrors()) {
             log.warn("Contact form validation failed: {}", bindingResult.getAllErrors());
             
-            // Re-populate the model for re-rendering the page
+            // The model for re-rendering the page
             model.addAttribute("skills", skills);
             model.addAttribute("projects", projects);
             model.addAttribute("experiences", experiences);
             model.addAttribute("name", "Nii Amatey Tagoe");
             model.addAttribute("title", "Software Engineer");
-            model.addAttribute("email", "your-email@example.com");
-            model.addAttribute("linkedin", "https://linkedin.com/in/your-profile");
+            model.addAttribute("email", "armahtey@gmail.com.com");
+            model.addAttribute("linkedin", "https://www.linkedin.com/in/mrarmahtey/");
             model.addAttribute("github", "https://github.com/mrNiiAmatey");
             model.addAttribute("location", "Dallas-Fort Worth, TX");
             
@@ -93,8 +93,8 @@ public class PortfolioController {
         // Log the contact submission (in production, send email or save to database)
         log.info("Contact form submitted - Name: {}, Email: {}, Subject: {}", 
                 contactForm.getName(), contactForm.getEmail(), contactForm.getSubject());
-        
-        // In a real application, you would:
+
+        // In a real application, this would:
         // 1. Send an email notification
         // 2. Save to a database
         // 3. Integrate with a CRM
