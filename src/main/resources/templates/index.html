@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" th:content="${name} + ' - ' + ${title} + ' specializing in Java, Spring Boot, and AWS Cloud Development'">
+    <title th:text="${name} + ' | ' + ${title}">Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">nii<span>.</span>dev</a>
+            <ul class="nav-links">
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-label">
+                <span class="dot"></span>
+                Open to opportunities
+            </div>
+            <h1>
+                Hi, I'm <span class="gradient-text" th:text="${name}">Nii Amatey</span><br>
+                <span th:text="${title}">Software Engineer</span>
+            </h1>
+            <p class="hero-description">
+                I build production-ready backend services and cloud-native applications with Java, Spring Boot, and AWS. Currently pursuing my CS degree while crafting clean, well-tested code.
+            </p>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">
+                    View My Work
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="skills-container">
+            <div class="section-header">
+                <p class="section-label">// What I Work With</p>
+                <h2 class="section-title">Technical Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card fade-in" th:each="skill : ${skills}">
+                    <div class="skill-icon" th:text="${skill.icon}">☕</div>
+                    <h3 th:text="${skill.category}">Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag" th:each="tech : ${skill.technologies}" th:text="${tech}">Java</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <p class="section-label">// Featured Work</p>
+            <h2 class="section-title">Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card fade-in" th:each="project, iterStat : ${projects}" th:classappend="${iterStat.even} ? 'even' : ''">
+                <div class="project-image">
+                    <span class="project-visual" th:text="${project.icon}">🔲</span>
+                </div>
+                <div class="project-content">
+                    <span class="project-type" th:text="${project.type}">Microservice</span>
+                    <h3 th:text="${project.title}">Project Title</h3>
+                    <p th:text="${project.description}">Project description goes here.</p>
+                    <div class="project-tech">
+                        <span th:each="tech : ${project.technologies}" th:text="${tech}">Tech</span>
+                    </div>
+                    <div class="project-links">
+                        <a th:href="${project.githubUrl}" class="project-link" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                            View Code
+                        </a>
+                        <a th:if="${project.demoUrl}" th:href="${project.demoUrl}" class="project-link" target="_blank">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                <polyline points="15 3 21 3 21 9"/>
+                                <line x1="10" y1="14" x2="21" y2="3"/>
+                            </svg>
+                            Live Demo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="experience-container">
+            <div class="section-header">
+                <p class="section-label">// Background</p>
+                <h2 class="section-title">Experience & Education</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in" th:each="exp : ${experiences}">
+                    <span class="timeline-date" th:text="${exp.dateRange}">2023 - Present</span>
+                    <h3 class="timeline-title" th:text="${exp.title}">Position Title</h3>
+                    <p class="timeline-company" th:text="${exp.organization}">Company Name</p>
+                    <p class="timeline-description" th:text="${exp.description}">Description of responsibilities and achievements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container fade-in">
+            <h2 class="contact-title">Let's Build Something Together</h2>
+            <p class="contact-description">
+                I'm actively seeking Software Engineer opportunities in backend development, cloud architecture, and full-stack roles. Based in <span th:text="${location}">Dallas-Fort Worth</span>, open to remote.
+            </p>
+            
+            <!-- Success Message -->
+            <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+            
+            <!-- Contact Form -->
+            <form th:action="@{/contact}" th:object="${contactForm}" method="post" class="contact-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" th:field="*{name}" placeholder="Your name" 
+                               th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
+                        <span class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" th:field="*{email}" placeholder="your@email.com"
+                               th:classappend="${#fields.hasErrors('email')} ? 'error' : ''">
+                        <span class="error-message" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" th:field="*{subject}" placeholder="What's this about?"
+                           th:classappend="${#fields.hasErrors('subject')} ? 'error' : ''">
+                    <span class="error-message" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></span>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" th:field="*{message}" rows="5" placeholder="Your message..."
+                              th:classappend="${#fields.hasErrors('message')} ? 'error' : ''"></textarea>
+                    <span class="error-message" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    Send Message
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                </button>
+            </form>
+            
+            <!-- Alternative Contact Links -->
+            <div class="contact-links">
+                <a th:href="'mailto:' + ${email}" class="contact-link">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                    Email Me
+                </a>
+                <a th:href="${linkedin}" class="contact-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a th:href="${github}" class="contact-link" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Designed & Built by <span th:text="${name}">Nii Amatey Tagoe</span> · © <span th:text="${#dates.year(#dates.createNow())}">2025</span></p>
+        <p class="footer-tech">Built with Spring Boot, Thymeleaf & ❤️</p>
+    </footer>
+
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>
