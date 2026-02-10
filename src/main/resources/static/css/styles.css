@@ -215,6 +215,25 @@ nav {
     opacity: 0;
 }
 
+.profile-photo {
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    border: 6px solid var(--accent);
+    box-shadow: 0 0 70px var(--accent-glow);
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .profile-photo {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
